@@ -1,0 +1,43 @@
+<div class="container py-5">
+  <div class="card col-md-6 mx-auto text-center">
+    <div class="card-body">
+      <h1 class="card-title"><%= @restaurant.name.capitalize %></h1>
+      <h6 class="card-subtitle mb-2 text-body-secondary"><%= @restaurant.address.capitalize %></h6>
+      <p class="card-text"><%= @restaurant.phone_number %></p>
+      <%= link_to 'back', restaurants_path %>
+      <%= link_to 'add a review', new_restaurant_review_path(@restaurant) %>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <div class='col-md-6 mx-auto'>
+    <h3 class="text-center mb-3">Reviews</h3>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item">
+          <div class="d-flex">
+            <h5>Rating
+              <% if review.rating == 0 %>
+                ☆☆☆☆☆
+              <% elsif review.rating == 1 %>
+                ★☆☆☆☆
+              <% elsif review.rating == 2 %>
+                ★★☆☆☆
+              <% elsif review.rating == 3 %>
+                ★★★☆☆
+              <% elsif review.rating == 4 %>
+                ★★★★☆
+              <% elsif review.rating == 5 %>
+                ★★★★★
+              <% end %>
+            </h5>
+          </div>
+          <%= review.content  %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+</div>

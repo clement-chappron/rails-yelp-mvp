@@ -1,0 +1,20 @@
+<div class="container py-5">
+  <h1>All restaurants</h1>
+
+  <div class="row gap-3">
+    <% @restaurants.each do |restaurant| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to restaurant.name.capitalize, restaurant_path(restaurant.id) %></h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary"><%= restaurant.address %></h6>
+          <p class="card-text"><%= restaurant.phone_number %></p>
+          <%= link_to 'Show restaurant', restaurant_path(restaurant.id) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <br>
+
+  <%= link_to 'Create a new restaurant', new_restaurant_path %>
+</div>
